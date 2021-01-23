@@ -1,5 +1,3 @@
-from LinearRegression import computeCost
-
 def gradientDescent(X, y, theta, alpha, iter):
     m = len(X)
     for _ in range(iter):

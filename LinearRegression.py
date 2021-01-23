@@ -1,4 +1,4 @@
-def computeCost(X, y, theta):
+def LinRegCost(X, y, theta):
     dataSize = len(X)
     cost = 0
     for i in range(dataSize):
