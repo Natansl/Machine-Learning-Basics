@@ -4,8 +4,7 @@ import pandas as pd
 
 class DataImporter(object):
 
-    def __init__(self, flag):
-        self.flag = flag
+    def __init__(self):
         self.data = []
         self.label = []
 
@@ -18,14 +17,10 @@ class DataImporter(object):
     def setup(self):
         data = self.__importData__()
         data = data.values.tolist()
-
-        if self.flag == "R":
-            self.data = data
-        elif self.flag == "C":
-            for i in range(len(data)):
-                for j in range(len(data[0]) - 1):
-                    dataLine = data[i][j]
-                    self.data.append(dataLine)
-                self.label.append(int(data[i][len(data[0])-1]))
+        for i in range(len(data)):
+            for j in range(len(data[0]) - 1):
+                dataLine = data[i][j]
+                self.data.append(dataLine)
+            self.label.append(int(data[i][len(data[0])-1]))
 
 
