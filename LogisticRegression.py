@@ -7,7 +7,7 @@ def sigmoid(z):
             g[i][j] = 1/(1 + math.exp(-z[i][j]))
     return g
 
-def LogRegCost(theta, X, y):
+def LogRegCostReg(theta, X, y, la):
     m = len(y)
     J = 0
     for i in range(m):
@@ -16,5 +16,11 @@ def LogRegCost(theta, X, y):
             h += X[i][j] * theta[j]
         h = sigmoid(h)
         J = J - y[i] * math.log(h) - (1 - y[i]) * math.log(1 - h)
-    J /= m
+    accTheta = 0
+    for i in range(1,len(theta)):
+        accTheta += theta[i] * theta[i]
+    J = J/m + la/(2 * m) * accTheta 
     return J
+
+def LogRegCost(theta, X, y):
+    return LogRegCostReg(theta, X, y, 0)
