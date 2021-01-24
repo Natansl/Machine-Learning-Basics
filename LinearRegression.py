@@ -1,3 +1,5 @@
+import math
+
 def LinRegCost(X, y, theta):
     dataSize = len(X)
     cost = 0
@@ -8,3 +10,9 @@ def LinRegCost(X, y, theta):
         cost += pow((Xi-y(i)),2)
     cost /= 2 * dataSize
     return cost
+
+def featureNormalize(X):
+    mean = sum(X)/len(X)
+    std = math.sqrt(sum((x - mean) ** 2 for x in X)/len(X))
+    Xnorm = [(x - mean)/std for x in  X]
+    return Xnorm
