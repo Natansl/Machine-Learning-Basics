@@ -16,10 +16,7 @@ def LogRegCostReg(theta, X, y, la):
             h += X[i][j] * theta[j]
         h = sigmoid(h)
         J = J - y[i] * math.log(h) - (1 - y[i]) * math.log(1 - h)
-    accTheta = 0
-    for i in range(1,len(theta)):
-        accTheta += theta[i] * theta[i]
-    J = J/m + la/(2 * m) * accTheta 
+    J = J/m + la/(2 * m) * [ x**2 for x in theta[1:len(theta)-1]] 
     return J
 
 def LogRegCost(theta, X, y):
