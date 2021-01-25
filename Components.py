@@ -23,4 +23,14 @@ class DataImporter(object):
                 self.data.append(dataLine)
             self.label.append(int(data[i][len(data[0])-1]))
 
+class Cost(object):
+    def __init__(self, cost, gradient):
+        self.cost = cost
+        self.gradient = gradient
+
+class Gradient(object):
+    def __init__(self, theta, JHistory):
+        self.theta = theta
+        self.JHistory = JHistory
+
 

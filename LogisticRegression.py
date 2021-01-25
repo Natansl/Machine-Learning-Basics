@@ -1,5 +1,5 @@
 import math
-from Components.Cost import Cost
+from Components import Cost
 
 def sigmoid(z):
     g = [[0 for col in range(len(z[0]))] for row in range(len(z))]
