@@ -1,4 +1,4 @@
-from Components import Gradient
+from Components import GradientOut
 from LinearRegression import LinRegCost
 
 def gradientDescent(X, y, theta, alpha, iter):
@@ -16,4 +16,4 @@ def gradientDescent(X, y, theta, alpha, iter):
             nextTheta.append(theta(i) - alpha * summ / m)
         theta = nextTheta
         JHistory.append(LinRegCost(X, y, theta))
-    return Gradient(theta,JHistory)
+    return GradientOut(theta,JHistory)

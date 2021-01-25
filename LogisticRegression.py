@@ -1,5 +1,5 @@
 import math
-from Components import Cost
+from Components import CostOut
 
 def sigmoid(z):
     g = [[0 for col in range(len(z[0]))] for row in range(len(z))]
@@ -25,7 +25,7 @@ def LogRegCostReg(theta, X, y, la):
     for i in range(1,len(grad)):
         grad[i] = (grad[i] + la * theta(i))/m
 
-    return Cost(J, grad)
+    return CostOut(J, grad)
 
 def LogRegCost(theta, X, y):
     return LogRegCostReg(theta, X, y, 0)
