@@ -8,6 +8,21 @@ def sigmoid(z):
             g[i][j] = 1/(1 + math.exp(-z[i][j]))
     return g
 
+def oneVAll(X, allTheta):
+    m = len(X)
+    num_param = len(allTheta)
+    p = []
+    for i in range(m):
+        pred = []
+        for j in range(num_param):
+            z = 0
+            for k in range(len(allTheta[0])):
+                z += allTheta[j][k] * X[i][k]
+            pred.append(sigmoid(z))
+        p.append(pred.index(max(pred)) + 1)
+    return p    
+
+
 def LogRegCostReg(theta, X, y, la):
     m = len(y)
     J = 0
