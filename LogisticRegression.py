@@ -1,4 +1,5 @@
 import math
+import MathOperators
 from Components import CostOut
 
 def sigmoid(z):
@@ -13,12 +14,7 @@ def oneVAll(X, allTheta):
     num_param = len(allTheta)
     p = []
     for i in range(m):
-        pred = []
-        for j in range(num_param):
-            z = 0
-            for k in range(len(allTheta[0])):
-                z += allTheta[j][k] * X[i][k]
-            pred.append(sigmoid(z))
+        pred = [sigmoid(MathOperators.matMult(allTheta[j], MathOperators.transpose(X[i]))) for j in range(num_param)]
         p.append(pred.index(max(pred)) + 1)
     return p    
 
@@ -28,10 +24,7 @@ def LogRegCostReg(theta, X, y, la):
     J = 0
     grad = [0 for _ in range(len(theta))]
     for i in range(m):
-        h = 0
-        for j in range(len(theta)):
-            h += X[i][j] * theta[j]
-        h = sigmoid(h)
+        h = sigmoid(MathOperators.matMult(X[i], MathOperators.transpose(theta)))
         J = J - y[i] * math.log(h) - (1 - y[i]) * math.log(1 - h)
         for j in range(len(theta)):
             grad[j] = grad[j] + (h - y[i]) * X[i][j]
