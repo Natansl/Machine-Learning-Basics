@@ -30,6 +30,21 @@ def matMult(A, B):
         out = out[0]
     return out
 
-A  = [[1, 2, 3]]
+def transpose(A):
+    if not isinstance(A[0], list):
+        rows = 1
+        cols = len(A)
+    else:
+        rows = len(A)
+        cols = len(A[0])
+        
+    At = [[0 for i in range(rows)] for j in range(cols)]
+    for i in range(rows):
+        for j in range(cols):
+            At[j][i] = A[i][j]
+    return At
+
+A  = [[1, 2, 3], [4, 5, 6]]
 B = [[1], [2], [3]]
 print(matMult(A,B))
+print(transpose(A))
